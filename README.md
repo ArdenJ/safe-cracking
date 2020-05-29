@@ -1,5 +1,6 @@
-# React Template 
+# Safe Cracking 
+A safe has a four-digit combination. Entering getting the code correct gets pictures of bunnies or something
 
-Simple React template for mocking up a client. 
+Built to demonstrate how XState can be used to build robust UIs
 
-Template uses WebPack, Babel, Jest, and [MVP](https://andybrewer.github.io/mvp/) for classless CSS 
+(Template uses WebPack, Babel, Jest, and maybe Emotion CSS)

@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1590939068762" clover="3.2.0">
-  <project timestamp="1590939068763" name="All files">
-    <metrics statements="28" coveredstatements="28" conditionals="9" coveredconditionals="9" methods="11" coveredmethods="11" elements="48" coveredelements="48" complexity="0" loc="28" ncloc="28" packages="3" files="4" classes="4"/>
+<coverage generated="1591027236822" clover="3.2.0">
+  <project timestamp="1591027236823" name="All files">
+    <metrics statements="48" coveredstatements="46" conditionals="14" coveredconditionals="10" methods="20" coveredmethods="17" elements="82" coveredelements="73" complexity="0" loc="48" ncloc="48" packages="3" files="4" classes="4"/>
     <package name="src">
-      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <metrics statements="13" coveredstatements="13" conditionals="6" coveredconditionals="5" methods="9" coveredmethods="6"/>
       <file name="App.js" path="C:\Users\jgadd\WORKSPACE\safe\src\App.js">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
+      </file>
+      <file name="safeMachine.js" path="C:\Users\jgadd\WORKSPACE\safe\src\safeMachine.js">
+        <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="5" methods="8" coveredmethods="5"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="18" type="cond" truecount="4" falsecount="0"/>
+        <line num="5" count="17" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="17" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="16" count="32" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.Combination">
@@ -21,34 +35,40 @@
       </file>
     </package>
     <package name="src.components.Lock">
-      <metrics statements="22" coveredstatements="22" conditionals="9" coveredconditionals="9" methods="8" coveredmethods="8"/>
+      <metrics statements="31" coveredstatements="29" conditionals="8" coveredconditionals="5" methods="9" coveredmethods="9"/>
       <file name="Lock.js" path="C:\Users\jgadd\WORKSPACE\safe\src\components\Lock\Lock.js">
-        <metrics statements="19" coveredstatements="19" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="32" type="cond" truecount="2" falsecount="0"/>
-        <line num="11" count="31" type="stmt"/>
-        <line num="17" count="31" type="stmt"/>
-        <line num="19" count="31" type="stmt"/>
-        <line num="20" count="3" type="cond" truecount="2" falsecount="0"/>
+        <metrics statements="31" coveredstatements="29" conditionals="8" coveredconditionals="5" methods="9" coveredmethods="9"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="11" count="31" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="31" type="stmt"/>
+        <line num="20" count="31" type="stmt"/>
+        <line num="21" count="31" type="stmt"/>
+        <line num="23" count="31" type="stmt"/>
+        <line num="24" count="31" type="stmt"/>
         <line num="25" count="31" type="stmt"/>
-        <line num="27" count="31" type="stmt"/>
-        <line num="28" count="18" type="cond" truecount="2" falsecount="0"/>
-        <line num="29" count="17" type="stmt"/>
-        <line num="33" count="31" type="stmt"/>
-        <line num="34" count="31" type="stmt"/>
-        <line num="35" count="31" type="stmt"/>
-        <line num="36" count="1805" type="stmt"/>
-        <line num="40" count="18" type="stmt"/>
+        <line num="26" count="31" type="stmt"/>
+        <line num="28" count="31" type="stmt"/>
+        <line num="30" count="31" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="cond" truecount="2" falsecount="2"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
         <line num="46" count="31" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="52" count="2" type="stmt"/>
-        <line num="57" count="3" type="stmt"/>
-      </file>
-      <file name="checkCode.js" path="C:\Users\jgadd\WORKSPACE\safe\src\components\Lock\checkCode.js">
-        <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
-        <line num="1" count="16" type="stmt"/>
-        <line num="3" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="4" count="8" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="18" type="cond" truecount="2" falsecount="0"/>
+        <line num="48" count="17" type="stmt"/>
+        <line num="52" count="31" type="stmt"/>
+        <line num="53" count="31" type="stmt"/>
+        <line num="54" count="31" type="stmt"/>
+        <line num="55" count="1840" type="stmt"/>
+        <line num="59" count="18" type="stmt"/>
+        <line num="65" count="31" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="75" count="3" type="stmt"/>
       </file>
     </package>
   </project>

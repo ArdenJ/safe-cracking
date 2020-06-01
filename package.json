@@ -41,9 +41,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@xstate/react": "^0.8.1",
     "babel-cli": "^6.26.0",
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "xstate": "^4.10.0"
   }
 }

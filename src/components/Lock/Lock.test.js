@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 
 import Lock from './Lock'
+import {SECRET} from '../../safeMachine'
 
 const testCode = [1, 5, 4, 7]
 
@@ -12,11 +13,6 @@ describe("it renders a lock", () => {
 
     const buttonArray = getAllByTestId('lockButton')
     expect(buttonArray[0]).toHaveTextContent(/1/)
-  })
-
-  test("and fails to render if the code is impossible", () =>{
-    const {getByTestId} = render(<Lock secret={testCode} buttonLength={6}/>)
-    expect(getByTestId('error')).toBeInTheDocument()
   })
 })
 
@@ -67,7 +63,7 @@ describe("it evaluates whether the code is correct", () => {
     expect(getByText(/error/i)).toBeInTheDocument()
   })
 
-  it("or returns 'correct' if the code is accepted", () => {
+  it("and returns 'correct' if the code is accepted", () => {
     const { getByText, getByTestId } = render(<Lock secret={testCode} buttonLength={60}/>)
 
     for (let i of testCode) fireEvent.click(getByText(`${i}`))

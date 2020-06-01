@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
+import {useMachine} from '@xstate/react'
 
 import Combination from '../Combination/Combination'
-import {checkCode} from './checkCode'
+import { safeMachine } from '../../safeMachine'
+
 
 const Lock = ({secret, buttonLength}) => {
   // TODO: Don't return to client throw error instead
   // Return an error in view 
-  if (Math.max(...secret) > buttonLength) return (
-  <h2 data-testid='error'>Error: too many secrets, not enough buttons</h2>
-  )
+  if (Math.max(...secret) > buttonLength) throw new Error('too many secrets, not enough buttons')
 
   // Acceptance states
   const STATES = {
@@ -16,21 +16,36 @@ const Lock = ({secret, buttonLength}) => {
     ERR: 'error',
     CORRECT: 'correct',
   }
+
+  const MACHINE = safeMachine(secret)
+  const [current, send] = useMachine(MACHINE)
+  
+  const updateCode = (val) => send("ENTER_CODE", {value: val})
+  const resetCode = () => send("RESET")
+  const tryCode = () => send("TRY")
+  const getCode = current.context.code
   
   const [accepted, setAccepted] = useState({ state: STATES.PENDING })
-
-  const handleCheck = (secret, answer) => {
-    checkCode(secret, answer) 
-    ? setAccepted({state: STATES.CORRECT}) 
-    : setAccepted({state: STATES.ERR})
-  } 
-
-  // Users combination state
-  const [combination, setCombination] = useState({ code: [] })
   
+  const handleCheck = () => {
+    const { value } = tryCode()
+    switch (value) {
+      case 'success': 
+      setAccepted({state: STATES.CORRECT})
+      break;
+      case 'failure': 
+      setAccepted({state: STATES.ERR})
+      break;
+      case 'idle':
+        default: 
+        setAccepted({ state: STATES.PENDING })
+        break;
+      } 
+    } 
+
   const handleClick = (value) => {
-    if (combination.code.length >= 4) return 
-    setCombination({ code: [...combination.code, value] } )
+    if (getCode.length >= 4) return 
+    updateCode(value)
   }
 
  // Creates an array of 60 buttons with numbers 1..60
@@ -50,15 +65,14 @@ const Lock = ({secret, buttonLength}) => {
   return (
     <div>
       {buttons}
-      <Combination code={combination.code}/>
+      <Combination code={getCode}/>
       <button onClick={() => {
-        setCombination({code: []})
-        setAccepted({state: STATES.PENDING})
-        }
-      }>
+        resetCode()
+        setAccepted({state: STATES.PENDING}) // TODO: clean this up
+      }}>
         Reset
       </button>
-      <button onClick={() => handleCheck(secret, combination.code)}>
+      <button onClick={() => handleCheck()}>
         {accepted.state}
       </button>
     </div>

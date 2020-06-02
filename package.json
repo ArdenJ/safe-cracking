@@ -41,8 +41,11 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@xstate/react": "^0.8.1",
     "babel-cli": "^6.26.0",
+    "emotion": "^10.0.27",
     "file-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

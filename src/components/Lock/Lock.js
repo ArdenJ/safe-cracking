@@ -1,5 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
 import {useMachine} from '@xstate/react'
+import emotion from 'emotion'
+import styled from '@emotion/styled'
 
 import Combination from '../Combination/Combination'
 import { safeMachine } from '../../safeMachine'
@@ -68,20 +70,27 @@ const Lock = ({secret, buttonLength}) => {
   const buttons = new Array
   for (let i = 1; i <= noOfButtons; i++) {
     buttons.push(
+      <StyledButton rotation={(360 / noOfButtons) * (i - 1)}>
       <button 
-      ref={refCont}
       key={`button_${i}`} 
       data-testid='lockButton' 
-      onClick={() => handleClick(i)}>
+      onClick={() => handleClick(i)}
+      >
           {i}
       </button>
+      </StyledButton>
     )
   }
   
   return (
     <div>
-      {buttons}
       <Combination code={getCode}/>
+      <StyledContainer>
+        <div className='dial'>
+          <Dial ref={refCont} noOfButtons={buttonLength} button={getCode[getCode.length - 1]}/>
+        </div>
+        {buttons}
+      </StyledContainer>
       <button onClick={() => {
         resetCode()
         setAccepted({state: STATES.PENDING})
@@ -91,9 +100,47 @@ const Lock = ({secret, buttonLength}) => {
       <button onClick={() => handleCheck()}>
         {accepted.state}
       </button>
-      <Dial ref={refCont} noOfButtons={buttonLength} button={getCode[getCode.length - 1]} />
     </div>
   )
 }
 
 export default Lock
+
+
+const StyledButton = styled.div(props => ({
+  transform: `rotate(${props.rotation}deg) translate(14em) rotate(-${props.rotation}deg)`
+}))
+
+const StyledContainer = styled.div`
+    position: relative;
+    width: 24em;
+    height: 24em;
+    padding: 2.8em;
+    border: dashed 1px;
+    border-radius: 50%;
+    margin: 1.75em auto 0;
+    transform: rotate(-90deg);
+
+  div {
+    display: block;
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 2em; height: 2em;
+    margin: -1em;
+  }
+
+  .dial {
+    transform: translateX(250%) translateY(-250%) rotate(90deg);
+  }
+
+  button { display: block; width: 100%; height: 100%;
+    transform: rotate(90deg);
+    border: none; 
+    border-radius: 50%;
+    background-color: #11142a;
+    color: white;
+
+  }
+`
+
+// apply the .deg class to each item within a .container 

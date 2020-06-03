@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react'
+import styled from '@emotion/styled'
 
 const Dial = React.forwardRef(({noOfButtons, button}, ref) => {
 
@@ -12,18 +13,23 @@ const Dial = React.forwardRef(({noOfButtons, button}, ref) => {
     : ref.current.style.transform = `rotate(${-1 * (0 - degrees)}deg)`
   }, [button])
 
-  return <div ref={ref} data-testid='dial' style={{height: 200, width: 200, border: '2px solid purple', transitionDuration: '0.6s'}}>
-            <svg viewBox="0 0 10 10" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="5" cy="5" r="2" />
+  return <StyledDial ref={ref} data-testid='dial' style={{boxSizing: 'border-box', height: 340, width: 340, borderRadius: '50%', transitionDuration: '0.6s'}}>
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="20" cy="20" r="20" fill="transparent"/>
           <line
-            x1="5"
-            y1="3"
-            x2="5"
-            y2="3.2"
-            style={{ stroke: "rgb(255,0,0)", strokeWidth: 0.4 }}
+            x1="20"
+            y1="0"
+            x2="20"
+            y2="6"
+            style={{ stroke: "#001f3f", strokeWidth: 1 }}
           />
         </svg>
-  </div>
+  </StyledDial>
 })
 
 export default Dial 
+
+const StyledDial = styled.div`
+background: linear-gradient(145deg, #ffffff, #d8e0e6);
+border: 1px solid #fefefe;
+`

@@ -6,7 +6,7 @@ const codeArray = code.map((i, index) => {
 })
 
   return (
-    <div data-testid='combination' style={{display: 'flex', justifyContent: 'space-evenly'}}>
+    <div data-testid='combination' style={{display: 'flex', justifyContent: 'space-evenly', width: '100%', height: '100%', gridArea: 'code', alignItems: 'flex-end'}}>
       {codeArray}
     </div>
   )

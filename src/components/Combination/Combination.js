@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from '@emotion/styled'
 
 const Combination = ({code}) => {
 const codeArray = code.map((i, index) => {
@@ -6,10 +7,19 @@ const codeArray = code.map((i, index) => {
 })
 
   return (
-    <div data-testid='combination' style={{display: 'flex', justifyContent: 'space-evenly', width: '100%', height: '100%', gridArea: 'code', alignItems: 'flex-end'}}>
+    <StyledCombination data-testid='combination'>
       {codeArray}
-    </div>
+    </StyledCombination>
   )
 }
 
 export default Combination
+
+const StyledCombination = styled.div`
+  display: flex; 
+  justify-content: space-evenly; 
+  width: 100%; 
+  height: 100%; 
+  grid-area: code; 
+  align-items: flex-end;
+`

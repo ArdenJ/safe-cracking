@@ -1,4 +1,5 @@
-import {Machine, interpret, assign} from 'xstate'
+import {Machine, assign} from 'xstate'
+import {useMachine} from '@xstate/react'
 
 const updateCode = assign((context, event) => {
   if (event.value === undefined || typeof event.value !== 'number') return 
@@ -13,7 +14,7 @@ const assertIncorrect = context => context.code !== context.secret
 
 const assertLength = context => context.code.length === 4
 
-export const safeMachine = (secret) => Machine({
+const safeMachine = (secret) => Machine({
   id: 'safe',
   initial: 'idle',
   context: {
@@ -67,4 +68,19 @@ export const safeMachine = (secret) => Machine({
   }
 });
 
+// State Machine & hook
+export const hookMethods = (secret) => {
+  const MACHINE = safeMachine(secret)
+  const [current, send] = useMachine(MACHINE)
+    
+  // Event methods
+  const updateCode = (val) => send("ENTER_CODE", {value: val})
+  const resetCode = (ref) => {
+    ref.current.style.transform = `rotate(0deg)`
+    send("RESET")
+  }
+  const tryCode = () => send("TRY")
+  const getCode = current.context.code
 
+  return { updateCode, resetCode, tryCode, getCode }
+}
